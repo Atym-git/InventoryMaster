@@ -7,7 +7,9 @@ public class OpenAchest : MonoBehaviour
 {
     [SerializeField] private Button openAChestButton;
 
-    ResourceLeader resourceLoaderScript;
+    [SerializeField] ResourceLeader resourceLoaderScript;
+
+    private void Start() => OpenAChest();
 
     private void OpenAChest() => openAChestButton.onClick.AddListener(resourceLoaderScript.InstantiateItems);
 }
