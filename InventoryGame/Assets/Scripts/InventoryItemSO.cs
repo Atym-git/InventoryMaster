@@ -5,10 +5,16 @@ using UnityEngine;
 public class InventoryItemSO : ScriptableObject
 {
     [field:SerializeField]
+    public int Id {  get; private set; }
+    [field:SerializeField]
     public string Name {  get; private set; }
+
+    [field: SerializeField]
+    public string Class { get; private set; }
 
     [field:SerializeField]
     public int Cost {  get; private set; }
 
-    
+    [field: SerializeField]
+    public string MainStat { get; private set; }
 }

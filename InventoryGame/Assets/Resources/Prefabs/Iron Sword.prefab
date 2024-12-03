@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3967069053948080237}
   - component: {fileID: 437342887187184386}
   - component: {fileID: 4587941267648031366}
+  - component: {fileID: 1485610187414157804}
   m_Layer: 0
   m_Name: Iron Sword
   m_TagString: Untagged
@@ -27,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 308588177322660682}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_LocalScale: {x: 400, y: 550, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -143,3 +144,20 @@ PolygonCollider2D:
       - {x: 0.06, y: -0.089999996}
       - {x: 0.16, y: 0.08}
   m_UseDelaunayMesh: 0
+--- !u!114 &1485610187414157804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308588177322660682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc889b6fae6a6ca459648232de97c9d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  _class: 
+  _mainStat: 
+  _cost: 0
+  id: 5
