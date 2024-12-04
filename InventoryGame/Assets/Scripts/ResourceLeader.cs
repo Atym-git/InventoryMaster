@@ -11,13 +11,15 @@ public class ResourceLeader : MonoBehaviour
     [SerializeField] private Transform rootForItems;
 
     [SerializeField] private GameObject _loadedIconsPlacement;
+    [SerializeField] private GameObject _loadedItemPrefab;
     [SerializeField] private Transform rootPlaceIcons;
 
     [SerializeField] private InventoryItemSO inventoryItem;
     private InventoryItemSO _loadedInventoryItem;
 
     InventoryItemSO[] inventoryItemSOs;
-    private GameObject[] itemsPrefabs;
+    private Sprite[] itemSprites;
+
 
     
 
@@ -38,8 +40,8 @@ public class ResourceLeader : MonoBehaviour
 
 
 
-        Debug.Log(inventoryItem.Name);
-        Debug.Log(inventoryItem.Cost);
+        //Debug.Log(inventoryItem.Name);
+        //Debug.Log(inventoryItem.Cost);
 
         //Debug.Log(_loadedBulletPrefab);
 
@@ -52,6 +54,12 @@ public class ResourceLeader : MonoBehaviour
     }
     public void InstantiateItems()
     {
+        GameObject instance = Instantiate(_loadedItemPrefab, rootForItems);
+
+        //GameObject instance = Instantiate(itemsPrefabs[Random.Range(0, itemsPrefabs.Length)]);
+
+        var itemScript = instance.GetComponent<Item>();
+
         foreach (var itemSO in inventoryItemSOs)
         {
             //Debug.Log($"{item.Name} - {item.Cost}");
@@ -61,24 +69,30 @@ public class ResourceLeader : MonoBehaviour
             //foreach (var root in roots)
             //{
 
-            foreach (var prefab in itemsPrefabs)
-            {
-                var itemScript = prefab.GetComponent<Item>();
-                if (itemScript.id == itemSO.Id)
-                {
-                    GameObject instance = Instantiate(prefab);
-                    instance.transform.SetParent(rootForItems, false);
+            //foreach (var prefab in itemsPrefabs)
+            //Debug.Log($"{itemScript.itemName} - {itemSO.Name}");
+            //Debug.Log(itemSO.name);
+            //{
+            //    Destroy(instance);
+            //}
+            //else
+            //Debug.Log(instance);
 
-                    Debug.Log(instance);
+            //var element = myArray[Random.Range(0, myArray.Length)];
 
-                    if (instance.TryGetComponent(out Item itemInstance))
-                    {
-                        Debug.Log(itemInstance);
-                        Debug.Log(instance);
-                        itemInstance.SetupItem(itemSO.Id, itemSO.Name, itemSO.Cost, itemSO.Class, itemSO.MainStat);
-                    }
-                }
-            }
+
+
+            //var randomItem = itemSO(inventoryItemSOs[Random.Range(0, inventoryItemSOs.Length)]);
+
+            var randomItemSO = inventoryItemSOs[Random.Range(0, inventoryItemSOs.Length)];
+
+            //Debug.Log(instance);
+                //Debug.Log($"{itemSO.Name} - {itemSO.Cost} - {itemSO.Class} - {itemSO.Stats} -  {itemSO.Sprite}");
+
+            itemScript.SetupItem(/*itemSO.Id,*/ randomItemSO.Name, randomItemSO.Cost, randomItemSO.Class, randomItemSO.Stats, randomItemSO.Sprite);
+
+
+            //}
             //}
         }
     }
@@ -98,8 +112,9 @@ public class ResourceLeader : MonoBehaviour
         //Debug.Log(inventoryItemSOs.Length);
         //Debug.Log(_loadedBulletPrefab);
 
-        itemsPrefabs = Resources.LoadAll("Prefabs", typeof(GameObject))
-            .Cast<GameObject>()
+        itemSprites = Resources.LoadAll("SpritesRPG/Potion", typeof(Sprite))
+            .Cast<Sprite>()
             .ToArray();
+        Debug.Log(itemSprites.Length);
     }
 }

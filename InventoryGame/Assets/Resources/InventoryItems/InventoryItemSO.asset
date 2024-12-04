@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baaf3bbdedbf6024f8fc579a36bcfd0c, type: 3}
   m_Name: InventoryItemSO
   m_EditorClassIdentifier: 
-  <Id>k__BackingField: 1
   <Name>k__BackingField: Bone
   <Class>k__BackingField: MonsterDrop
   <Cost>k__BackingField: 15
-  <MainStat>k__BackingField: Roughness
+  <Stats>k__BackingField: 3
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 4014a2296af50dc4cbe6c771235fa1d9, type: 3}

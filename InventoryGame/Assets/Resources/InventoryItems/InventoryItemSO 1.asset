@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baaf3bbdedbf6024f8fc579a36bcfd0c, type: 3}
   m_Name: InventoryItemSO 1
   m_EditorClassIdentifier: 
-  <Id>k__BackingField: 2
   <Name>k__BackingField: Book
   <Class>k__BackingField: Misc
   <Cost>k__BackingField: 50
-  <MainStat>k__BackingField: Page
+  <Stats>k__BackingField: 1
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 6737e6c0d224938438e85689f33e7c5e, type: 3}

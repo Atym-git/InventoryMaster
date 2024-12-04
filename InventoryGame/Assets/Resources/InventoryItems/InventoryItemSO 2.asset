@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baaf3bbdedbf6024f8fc579a36bcfd0c, type: 3}
   m_Name: InventoryItemSO 2
   m_EditorClassIdentifier: 
-  <Id>k__BackingField: 3
   <Name>k__BackingField: CutRuby
   <Class>k__BackingField: Jewelry
   <Cost>k__BackingField: 1000
-  <MainStat>k__BackingField: Color
+  <Stats>k__BackingField: 2
+  <Sprite>k__BackingField: {fileID: 21300000, guid: a488caedb9b366440aac683b044d0244, type: 3}

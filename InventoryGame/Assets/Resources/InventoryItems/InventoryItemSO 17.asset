@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: baaf3bbdedbf6024f8fc579a36bcfd0c, type: 3}
-  m_Name: InventoryItemSO 3
+  m_Name: InventoryItemSO 17
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: IronHelmet
-  <Class>k__BackingField: Armory
-  <Cost>k__BackingField: 120
-  <Stats>k__BackingField: 15
-  <Sprite>k__BackingField: {fileID: 21300000, guid: 3dd95dd3faa0ad24fbe16af08caa08ca, type: 3}
+  <Name>k__BackingField: BluePotion3
+  <Class>k__BackingField: Potions
+  <Cost>k__BackingField: 200
+  <Stats>k__BackingField: 60
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 973f5160e32a5d44bbb34561d533a849, type: 3}

@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] public string nameItem;
-    [SerializeField] public string classItem;
-    [SerializeField] public string mainStat;
+    [SerializeField] public string itemName;
+    [SerializeField] public string itemClass;
+    [SerializeField] public int stats;
     [SerializeField] public int cost;
-    [SerializeField] public int id;
+    //[SerializeField] public int id;
+    [SerializeField] private Image _itemImage;
+    //[SerializeField] public Sprite itemSprite;
 
     private DisplayItemInfo displayItemInfo;
 
@@ -18,28 +22,46 @@ public class Item : MonoBehaviour
     private void Awake()
     {
         displayItemInfo = FindFirstObjectByType<DisplayItemInfo>();
+        _itemImage = GetComponent<Image>();
     }
 
 
-    public void SetupItem(int Id, string Name, int Cost, string Class, string MainStat)
+    public void SetupItem(/*int Id,*/ string Name, int Cost, string Class, int Stats, Sprite ItemSprite)
     {
-        id = Id;
-        nameItem = Name;
+        //id = Id;
+        itemName = Name;
         cost = Cost;
-        mainStat = MainStat;
-        classItem = Class;
+        stats = Stats;
+        itemClass = Class;
+        _itemImage.sprite = ItemSprite;
     }
-    private void OnMouseEnter()
+
+    public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        Debug.Log(displayItemInfo);
-        itemScript = GetComponent<Item>();
-        displayItemInfo.DisplayInfo();
+        //Output to console the GameObject's name and the following message
+        var pointedItem = GetInstanceID();
+        displayItemInfo.DisplayInfo(pointedItem, _itemImage);
+        Debug.Log($"Cursor Entering + {GetInstanceID()} + GameObject");
     }
-    private void OnMouseExit()
+
+    public void OnPointerExit(PointerEventData pointerEventData)
     {
-        Debug.Log(displayItemInfo);
-        itemScript = null;
+        //Output the following message with the GameObject's name
+        Debug.Log("Cursor Exiting " + name + " GameObject");
         displayItemInfo.StopDisplayInfo();
     }
-    
+
+    //private void OnMouseEnter()
+    //{
+    //    Debug.Log(displayItemInfo);
+    //    itemScript = GetComponent<Item>();
+    //    displayItemInfo.DisplayInfo();
+    //}
+    //private void OnMouseExit()
+    //{
+    //    Debug.Log(displayItemInfo);
+    //    itemScript = null;
+    //    displayItemInfo.StopDisplayInfo();
+    //}
+
 }

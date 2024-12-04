@@ -32,7 +32,7 @@ public class ItemStatsDisplay : MonoBehaviour
         nameTMP.text = InventoryItemSO.Name;
         classTMP.text = InventoryItemSO.Class;
         costTMP.text = InventoryItemSO.Cost.ToString();
-        mainStatTMP.text = InventoryItemSO.MainStat;
+        mainStatTMP.text = InventoryItemSO.Stats.ToString();
 
     }
     private void OnMouseExit()
