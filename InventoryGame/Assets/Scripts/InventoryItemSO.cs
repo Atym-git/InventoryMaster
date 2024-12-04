@@ -4,8 +4,6 @@ using UnityEngine;
  menuName = "SO/Items/New Inventory Item")]
 public class InventoryItemSO : ScriptableObject
 {
-    //[field:SerializeField]
-    //public int Id {  get; private set; }
     [field:SerializeField]
     public string Name {  get; private set; }
 

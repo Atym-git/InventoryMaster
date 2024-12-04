@@ -11,13 +11,9 @@ public class Item : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] public string itemClass;
     [SerializeField] public int stats;
     [SerializeField] public int cost;
-    //[SerializeField] public int id;
     [SerializeField] private Image _itemImage;
-    //[SerializeField] public Sprite itemSprite;
 
     private DisplayItemInfo displayItemInfo;
-
-    public Item itemScript;
 
     private void Awake()
     {
@@ -28,7 +24,6 @@ public class Item : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void SetupItem(string Name, int Cost, string Class, int Stats, Sprite ItemSprite)
     {
-        //id = Id;
         itemName = Name;
         cost = Cost;
         stats = Stats;
@@ -38,30 +33,11 @@ public class Item : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        //Output to console the GameObject's name and the following message
-        //var pointedItem = GetInstanceID();
         displayItemInfo.DisplayInfo(itemName, cost, itemClass, stats, _itemImage.sprite);
-        Debug.Log($"Cursor Entering + {GetInstanceID()} + GameObject");
     }
 
     public void OnPointerExit(PointerEventData pointerEventData)
     {
-        //Output the following message with the GameObject's name
-        Debug.Log("Cursor Exiting " + name + " GameObject");
         displayItemInfo.StopDisplayInfo();
     }
-
-    //private void OnMouseEnter()
-    //{
-    //    Debug.Log(displayItemInfo);
-    //    itemScript = GetComponent<Item>();
-    //    displayItemInfo.DisplayInfo();
-    //}
-    //private void OnMouseExit()
-    //{
-    //    Debug.Log(displayItemInfo);
-    //    itemScript = null;
-    //    displayItemInfo.StopDisplayInfo();
-    //}
-
 }

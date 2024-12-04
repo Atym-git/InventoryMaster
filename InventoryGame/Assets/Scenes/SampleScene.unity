@@ -262,9 +262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9897c6cf5ace4d6409d41dee68f9a893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _loadedItemPrefab: {fileID: 1303748705753869463, guid: 60425fa1bdb598046a0e6675b0a1a886, type: 3}
   rootForItems: {fileID: 685899951}
   _loadedIconsPlacement: {fileID: 1427826836311380813, guid: 2d4e1b6e4d51b21428ca682f5faa52f0, type: 3}
-  _loadedItemPrefab: {fileID: 1303748705753869463, guid: 60425fa1bdb598046a0e6675b0a1a886, type: 3}
   rootPlaceIcons: {fileID: 669395682}
   inventoryItem: {fileID: 11400000, guid: e9ffd0143d29cca4e993f2141933a42d, type: 2}
 --- !u!4 &216821220
@@ -1019,7 +1019,7 @@ GameObject:
   - component: {fileID: 926133136}
   - component: {fileID: 926133135}
   m_Layer: 0
-  m_Name: BottomIconImage
+  m_Name: Bottom Icon Image
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
