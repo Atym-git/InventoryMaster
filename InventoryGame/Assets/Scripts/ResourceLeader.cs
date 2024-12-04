@@ -20,7 +20,7 @@ public class ResourceLeader : MonoBehaviour
     InventoryItemSO[] inventoryItemSOs;
     private Sprite[] itemSprites;
 
-
+    private int _amountOfLoadedItems = 0;
     
 
     void Start()
@@ -54,46 +54,49 @@ public class ResourceLeader : MonoBehaviour
     }
     public void InstantiateItems()
     {
-        GameObject instance = Instantiate(_loadedItemPrefab, rootForItems);
-
-        //GameObject instance = Instantiate(itemsPrefabs[Random.Range(0, itemsPrefabs.Length)]);
-
-        var itemScript = instance.GetComponent<Item>();
-
-        foreach (var itemSO in inventoryItemSOs)
+        if (_amountOfLoadedItems < 20)
         {
-            //Debug.Log($"{item.Name} - {item.Cost}");
+            _amountOfLoadedItems++;
 
-            //Debug.Log(item);
+            GameObject instance = Instantiate(_loadedItemPrefab, rootForItems);
 
-            //foreach (var root in roots)
-            //{
+            Item itemScript = instance.GetComponent<Item>();
 
-            //foreach (var prefab in itemsPrefabs)
-            //Debug.Log($"{itemScript.itemName} - {itemSO.Name}");
-            //Debug.Log(itemSO.name);
-            //{
-            //    Destroy(instance);
-            //}
-            //else
-            //Debug.Log(instance);
+            foreach (var itemSO in inventoryItemSOs)
+            {
+                //Debug.Log($"{item.Name} - {item.Cost}");
 
-            //var element = myArray[Random.Range(0, myArray.Length)];
+                //Debug.Log(item);
+
+                //foreach (var root in roots)
+                //{
+
+                //foreach (var prefab in itemsPrefabs)
+                //Debug.Log($"{itemScript.itemName} - {itemSO.Name}");
+                //Debug.Log(itemSO.name);
+                //{
+                //    Destroy(instance);
+                //}
+                //else
+                //Debug.Log(instance);
+
+                //var element = myArray[Random.Range(0, myArray.Length)];
 
 
 
-            //var randomItem = itemSO(inventoryItemSOs[Random.Range(0, inventoryItemSOs.Length)]);
+                //var randomItem = itemSO(inventoryItemSOs[Random.Range(0, inventoryItemSOs.Length)]);
 
-            var randomItemSO = inventoryItemSOs[Random.Range(0, inventoryItemSOs.Length)];
+                var randomItemSO = inventoryItemSOs[Random.Range(0, inventoryItemSOs.Length)];
 
-            //Debug.Log(instance);
+                //Debug.Log(instance);
                 //Debug.Log($"{itemSO.Name} - {itemSO.Cost} - {itemSO.Class} - {itemSO.Stats} -  {itemSO.Sprite}");
 
-            itemScript.SetupItem(/*itemSO.Id,*/ randomItemSO.Name, randomItemSO.Cost, randomItemSO.Class, randomItemSO.Stats, randomItemSO.Sprite);
+                itemScript.SetupItem(/*itemSO.Id,*/ randomItemSO.Name, randomItemSO.Cost, randomItemSO.Class, randomItemSO.Stats, randomItemSO.Sprite);
 
 
-            //}
-            //}
+                //}
+                //}
+            }
         }
     }
 

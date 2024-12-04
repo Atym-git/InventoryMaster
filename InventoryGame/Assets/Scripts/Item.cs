@@ -26,7 +26,7 @@ public class Item : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
 
 
-    public void SetupItem(/*int Id,*/ string Name, int Cost, string Class, int Stats, Sprite ItemSprite)
+    public void SetupItem(string Name, int Cost, string Class, int Stats, Sprite ItemSprite)
     {
         //id = Id;
         itemName = Name;
@@ -39,8 +39,8 @@ public class Item : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         //Output to console the GameObject's name and the following message
-        var pointedItem = GetInstanceID();
-        displayItemInfo.DisplayInfo(pointedItem, _itemImage);
+        //var pointedItem = GetInstanceID();
+        displayItemInfo.DisplayInfo(itemName, cost, itemClass, stats, _itemImage.sprite);
         Debug.Log($"Cursor Entering + {GetInstanceID()} + GameObject");
     }
 

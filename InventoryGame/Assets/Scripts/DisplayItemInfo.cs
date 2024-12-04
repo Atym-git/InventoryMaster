@@ -10,7 +10,7 @@ public class DisplayItemInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI classTMP;
     [SerializeField] private TextMeshProUGUI costTMP;
     [SerializeField] private TextMeshProUGUI statsTMP;
-    [SerializeField] private GameObject DisplayIcon;
+    //[SerializeField] private GameObject DisplayIcon;
     [SerializeField] private Image itemImage;
 
     private Item itemScript;
@@ -18,19 +18,22 @@ public class DisplayItemInfo : MonoBehaviour
     private void Update()
     {
         itemScript = FindObjectOfType<Item>();
+        
     }
 
 
-    public void DisplayInfo(System.Int32 pointedItem, Image ItemImage)
+    public void DisplayInfo(string Name, int Cost, string Class, int Stats, Sprite ItemSprite)
     {
-        if (pointedItem == itemScript.GetInstanceID())
-        {
-            nameTMP.text = itemScript.itemName;
-            classTMP.text = itemScript.itemClass;
-            costTMP.text = itemScript.cost.ToString();
-            statsTMP.text = itemScript.stats.ToString();
+        //if (pointedItem == itemScript.GetInstanceID())
+        //{
+            nameTMP.text = Name;
+            classTMP.text = Class;
+            costTMP.text = Cost.ToString();
+            statsTMP.text = Stats.ToString();
+            itemImage.gameObject.SetActive(true);
+            itemImage.sprite = ItemSprite;
 
-        }
+        //}
     }
     public void StopDisplayInfo()
     {
@@ -38,6 +41,6 @@ public class DisplayItemInfo : MonoBehaviour
         classTMP.text = "Класс";
         costTMP.text = "Стоимость";
         statsTMP.text = "Статы";
-        itemScript = null;
+        itemImage.gameObject.SetActive(false);
     }
 }
