@@ -15,8 +15,13 @@ public class InventoryItemSO : ScriptableObject
 
     [field: SerializeField]
     public int Stats { get; private set; }
+
     [field: SerializeField]
     public Sprite Sprite { get; private set; }
+
     [field: SerializeField]
     public float DestroyInPercentsFrom0To1 { get; private set; }
+
+    [field: SerializeField]
+    public int Id { get; private set; }
 }

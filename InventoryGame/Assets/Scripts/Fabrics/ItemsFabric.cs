@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemsFabric : MonoBehaviour
+public class ItemsFabric : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private GameObject _loadedItemPrefab;
     [SerializeField] private Transform rootForItems;
@@ -14,10 +14,10 @@ public class ItemsFabric : MonoBehaviour
     [SerializeField] private InventoryItemSO inventoryItem;
     private InventoryItemSO _loadedInventoryItem;
 
-    InventoryItemSO[] inventoryItemSOs;
+    private InventoryItemSO[] inventoryItemSOs;
 
     [SerializeField] private int _itemsMaxAmount = 20;
-    private int _createdItemsAmount = 0;
+    private int _itemsLeftToLoad = 0;
 
     void Start()
     {
@@ -26,26 +26,36 @@ public class ItemsFabric : MonoBehaviour
     }
     public void InstantiateItems()
     {
-        if (_createdItemsAmount < _itemsMaxAmount)
+        if (rootForItems.childCount < _itemsMaxAmount)
         {
-            _createdItemsAmount++;
-
-            GameObject instance = Instantiate(_loadedItemPrefab, rootForItems);
-
-            Item itemScript = instance.GetComponent<Item>();
-
-            foreach (var itemSO in inventoryItemSOs)
+            if (_itemsLeftToLoad > 0)
             {
-                var randomItemSO = inventoryItemSOs[Random.Range(0, inventoryItemSOs.Length)];
-
-                itemScript.SetupItem(randomItemSO.Name, randomItemSO.Cost, randomItemSO.Class, randomItemSO.Stats, randomItemSO.Sprite, randomItemSO.DestroyInPercentsFrom0To1);
+                for (int i = 0; i < _itemsLeftToLoad; i++)
+                {
+                    InstantiateItem();
+                }
             }
+            else
+            {
+                InstantiateItem();
+            }
+
         }
     }
 
-    public void AllignAfterDestroy(int destroyedAmount)
+    private void InstantiateItem()
     {
-        _createdItemsAmount -= destroyedAmount;
+        GameObject instance = Instantiate(_loadedItemPrefab, rootForItems);
+
+        Item itemScript = instance.GetComponent<Item>();
+
+        foreach (var itemSO in inventoryItemSOs)
+        {
+            var randomItemSO = inventoryItemSOs[Random.Range(0, inventoryItemSOs.Length)];
+
+            itemScript.SetupItem(randomItemSO.Name, randomItemSO.Cost, randomItemSO.Class, randomItemSO.Stats,
+                randomItemSO.Sprite, randomItemSO.DestroyInPercentsFrom0To1, randomItemSO.Id);
+        }
     }
 
     private void LoadResources()
@@ -56,4 +66,18 @@ public class ItemsFabric : MonoBehaviour
     }
 
     public int GetItemsMaxAmount() => _itemsMaxAmount;
+
+    public void LoadData(GameData gameData)
+    {
+        _itemsLeftToLoad = gameData.itemCount;
+    }
+
+    public void SaveData(ref GameData gameData)
+    {
+        gameData.itemCount = rootForItems.childCount;
+        for (int i = 0; i < rootForItems.childCount; i++)
+        {
+            gameData.itemsIds[i] = rootForItems.GetChild(i).GetComponent<Item>().id;
+        }
+    }
 }

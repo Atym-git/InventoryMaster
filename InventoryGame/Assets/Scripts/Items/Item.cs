@@ -7,12 +7,13 @@ using UnityEngine.UI;
 
 public class Item : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] public string _itemName;
-    [SerializeField] public string _itemClass;
-    [SerializeField] public int _stats;
-    [SerializeField] public int _cost;
-    [SerializeField] private Image _itemImage;
+    public string itemName;
+    public string itemClass;
+    public int stats;
+    public int cost;
+    private Image _itemImage;
     private float _percentageDestroy;
+    public int id;
 
     private DisplayItemInfo displayItemInfo;
     private ItemsDestroyer itemsDestroyer;
@@ -24,14 +25,15 @@ public class Item : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         _itemImage = GetComponent<Image>();
     }
 
-    public void SetupItem(string Name, int Cost, string Class, int Stats, Sprite ItemSprite, float percentageDestroy)
+    public void SetupItem(string Name, int Cost, string Class, int Stats, Sprite ItemSprite, float percentageDestroy, int Id)
     {
-        _itemName = Name;
-        _cost = Cost;
-        _stats = Stats;
-        _itemClass = Class;
+        itemName = Name;
+        cost = Cost;
+        stats = Stats;
+        itemClass = Class;
         _itemImage.sprite = ItemSprite;
         _percentageDestroy = percentageDestroy;
+        id = Id;
     }
 
     private void Start()
@@ -41,7 +43,7 @@ public class Item : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        displayItemInfo.DisplayInfo(_itemName, _cost, _itemClass, _stats, _itemImage.sprite);
+        displayItemInfo.DisplayInfo(itemName, cost, itemClass, stats, _itemImage.sprite);
     }
 
     public void OnPointerExit(PointerEventData pointerEventData)
