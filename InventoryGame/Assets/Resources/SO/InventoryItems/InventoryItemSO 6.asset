@@ -17,3 +17,5 @@ MonoBehaviour:
   <Cost>k__BackingField: 3000
   <Stats>k__BackingField: 8
   <Sprite>k__BackingField: {fileID: 21300000, guid: 1af8487dcfd64b64ca50bb628d10eade, type: 3}
+  <DestroyInPercentsFrom0To1>k__BackingField: 0
+  <Id>k__BackingField: 7
